@@ -1,11 +1,8 @@
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy import stats
-import openpyxl
 from openpyxl.workbook import Workbook
-from sklearn.linear_model import LinearRegression
-
+from scipy import stats
 
 # Ures tomb inicializalasa, amiben a sorok adatait fogjuk kulcs-ertekben tarolni
 data = []
@@ -72,9 +69,9 @@ for entry in data:
 excel_filename = "../xls/inflacio.xlsx"
 wb.save(excel_filename)
 
-# Évek és élelmiszerárak (vagy összes infláció) konvertálása numpy tömbbé
+# Összes infláció és élelmiszerárak konvertálása numpy tömbbé
 x = np.array(total_values).reshape(-1, 1)
-y = np.array(food_prices)  # Vagy y = np.array(total_values)
+y = np.array(food_prices)
 
 # Lineáris regresszió végrehajtása
 slope, intercept, r_value, p_value, std_err = stats.linregress(x.squeeze(), y)
